@@ -1,0 +1,34 @@
+int led_A = 13;
+int led_B = 12;
+int gelen;
+
+void setup(){
+  pinMode(led_A, OUTPUT);
+  pinMode(led_B, OUTPUT);
+  Serial.begin(9600);
+  
+}
+
+void loop(){
+  if(Serial.available() > 0){
+    gelen = Serial.read();
+    switch(gelen){
+      case 0:
+      digitalWrite(led_A, LOW);
+      digitalWrite(led_B, LOW);
+      break;
+      case 1:
+      digitalWrite(led_B, HIGH);
+      digitalWrite(led_A, LOW);
+      break;
+      case 2:
+      digitalWrite(led_A, HIGH);
+      digitalWrite(led_B, LOW);
+      break;
+      case 3:
+      digitalWrite(led_A, HIGH);
+      digitalWrite(led_B, HIGH);
+      break;
+    }
+  }
+}
